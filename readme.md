@@ -70,11 +70,11 @@ To use a template add the following to the package.json of the project you want 
 // good practice to specify a Landfill version in dependencies
 // so it will definitely work for other dev
 "devDependencies": {
-	"landfill": "1.0.0"
+	"landfill": "0.1.3"
 }
 ```
 
-#### TODO:
+#### TODO: (not yet implemented)
 
 You can also create a .landfillrc and use the same json (although there is no need for parent `landfill` property)
 
@@ -164,7 +164,7 @@ module.exports =
   }
 ```
 
-Not only does this save having to repeat boilerplate template code for each new template (oh the irony), it should reduce the barrier of effort to write a new template.
+This saves having to repeat boilerplate templating code for each new template (oh the irony), thus it should reduce the effort barrier to write a new/custom template.
 ## Roadmap
 Landfill was created to fill a specific niche, and does that well. However, I hope that a few additional features would make Landfill a versatile tool.
 
