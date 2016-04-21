@@ -16,28 +16,44 @@ npm install -D landfill
 If saved as a npm package dependency (dev or normal), the version installed locally will be used if the cli version doesn't satisfy semantic version requirements. This makes the cli backwards and forwards compatible with local versions.
 
 ## Usage
-```bash
-Usage: lfill [options] <template>
+```
+Usage: land [options] [command]
+
+Commands:
+
+  list [options]             List all available templates by name
+  fill [options] <template>  Begin using a template <template>
 
 Options:
 
--h, --help                    output usage information
--V, --version                 output the version number
--C, --chdir <path>            Change working directory
--d, --debug                   Adds debuging, better source-mapping
--s, --version-safe <version>  forces use of specified version, will error out if version doesn't match landfill version
+  -V, --version  output the version number
+
+  Usage: list [options]
+
+    Options:
+      -h, --help  output usage information
+      -a, --all  list all available information, Name, Config Dir, Template Dir
+
+
+  Usage: fill [options] <template>
+
+    Options:
+      -h, --help                    output usage information
+      -C, --chdir <path>            Change working directory
+      -d, --debug                   Adds debuging, better source-mapping
+      -s, --version-safe <version>  forces use of specified version, will error out if version doesn't match landfill instance version
 ```
 
 ## Using A Template
 
 use app template in current directory
 ```bash
-lfill app 
+land fill app 
 ```
 
 Change the directory the template is applied to.
 ```bash
-lfill component -C src/javacsript
+land fill component -C src/javacsript
 ```
 
 Currently templates can only be used if they are configured in a package.json or .landfillrc file somewhere in the ancestry of the current working directory.
