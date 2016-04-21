@@ -1,6 +1,6 @@
 {
   "name": "landfill",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A customizable command-line scaffolding tool to speed up development.",
   "main": "dist/landfill.js",
   "scripts": {
