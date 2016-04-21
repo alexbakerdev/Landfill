@@ -1,0 +1,6 @@
+src/
+build/
+.gitignore
+.eslintignore
+.eslintrc.js
+config.js

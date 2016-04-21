@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "A customizable command-line scaffolding tool to speed up development.",
   "main": "dist/landfill.js",
-  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build/dist.js",
@@ -11,6 +10,10 @@
   },
   "bin": {
     "land": "dist/landfill.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xanderite/Landfill.git"
   },
   "author": "Alex Baker",
   "license": "MIT",
