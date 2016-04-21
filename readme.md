@@ -56,7 +56,7 @@ Change the directory the template is applied to.
 land fill component -C src/javacsript
 ```
 
-Currently templates can only be used if they are configured in a package.json or .landfillrc file somewhere in the ancestry of the current working directory.
+Currently templates can only be used if they are configured in a package.json ~~or .landfillrc~~ file somewhere in the ancestry of the current working directory.
 #### Config
 To use a template add the following to the package.json of the project you want to use.
 ```js
@@ -73,6 +73,8 @@ To use a template add the following to the package.json of the project you want 
 	"landfill": "1.0.0"
 }
 ```
+
+#### TODO:
 
 You can also create a .landfillrc and use the same json (although there is no need for parent `landfill` property)
 
