@@ -5,8 +5,16 @@ import { applyTemplate } from './lib/fileCopy.js'
 import chalk from 'chalk'
 import dedent from 'dedent-js'
 
-export default function landfill (templateName, templatePath, template, cwd) {
-  let prompt = new Prompter()
+export default function landfill (config) {
+  let cwd = config.cwd || path.resolve(process.cwd())
+  let templatePath = getTemplatePath()
+  let landfillPath = path.join(templatePath, 'landfill.js')
+
+  // load in template javascript from landfill.js file
+  let template = GLOBAL.require(landfillPath)
+
+  const templateName = config.templateName
+  const prompt = new Prompter()
 
   // Begin templating
   prompt.init()
@@ -16,12 +24,32 @@ export default function landfill (templateName, templatePath, template, cwd) {
     .then(answers => {
       // Get computed props and combine with answers
       let props = handleComps(answers, template.comps)
+
       // Handle each entry
       return handleEntries(props, template.entry)
     }).catch((err) => {
       // catch errors
       throw err
     })
+
+  /**
+   * Returns absolute path to template, for all valid configs
+   * @return {String} - path of template
+   */
+  function getTemplatePath () {
+    if (config.templatePath) {
+      // if templatePath is absolute or relatively defined
+      return path.resolve(cwd, config.templatePath)
+    } else if (config.configDir &&
+                config.templateConfig &&
+                config.templateConfig.src) {
+      // if configDir and templateConfig.src are defined
+      // (i.e. CLI is used)
+      return path.resolve(config.configDir, config.templateConfig.src)
+    } else {
+      throw new Error('Landfill config must contain a templatePath property.')
+    }
+  }
 
   function handleComps (answers, comps) {
     // computed props

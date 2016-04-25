@@ -88,6 +88,7 @@ function configLandfill (templateName) {
   // Begin loading config for landfill
   configLoader().then(ancestry => {
     let matchConfig = matchTemplateAndVersion(templateName, ancestry)
+
     if (continueWithCorrectVersion(matchConfig)) {
       // Using correct version of landfill for template
       let cwd = path.resolve(process.cwd())
@@ -96,15 +97,17 @@ function configLandfill (templateName) {
         cwd = path.resolve(cwd, options.chdir)
         if (GLOBAL.debug) console.log(`Changed cwd to ${cwd}`)
       }
-      let templatePath =
-        path.resolve(matchConfig.configDir
-        , matchConfig.template.template
-        )
-      let landfillPath = path.join(templatePath, 'landfill.js')
 
-      // load in template javascript from landfill.js file
-      let template = GLOBAL.require(landfillPath)
-      landfill(templateName, templatePath, template, cwd)
+      const landfillConfig =
+        { templateName: templateName
+        , templateConfig: matchConfig.template
+        , version: GLOBAL.version
+        , configDir: matchConfig.configDir
+        , cwd: cwd
+        }
+
+      console.log(landfillConfig)
+      landfill(landfillConfig)
     }
   })
 }

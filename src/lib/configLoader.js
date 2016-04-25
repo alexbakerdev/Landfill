@@ -119,12 +119,12 @@ export function configLoader () {
 }
 
 export function matchTemplateAndVersion (templateName, ancestry) {
-  ancestry.current = 0
+  ancestry.current = -1
   let templateConfig = {}
   let foundTemplate = false
 
   // find closest ancestor reference to templatename
-  do {
+  while (ascendAncestry(ancestry)) {
     let currentConfig = getCurrentConfig(ancestry)
     if (currentConfig.templates[templateName]) {
       templateConfig.template = currentConfig.templates[templateName]
@@ -132,7 +132,7 @@ export function matchTemplateAndVersion (templateName, ancestry) {
       foundTemplate = true
       break
     }
-  } while (ascendAncestry(ancestry))
+  }
 
   // starting from where we found the template name
   // find closest ancestor version of landfill
