@@ -63,7 +63,7 @@ To use a template add the following to the package.json of the project you want 
 // contents of package.json
 "landfill": {
   "{{template-name}}": {
-    "template": "{{path/to/template/folder}}"
+    "src": "{{path/to/template/folder}}"
   }
 }
 …
@@ -82,7 +82,7 @@ You can also create a .landfillrc and use the same json (although there is no ne
 // contents of .landfillrc
 {
   "{{template-name}}": {
-    "template": "{{path/to/template/folder}}"
+    "src": "{{path/to/template/folder}}"
   }
 }
 ```
