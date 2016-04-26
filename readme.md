@@ -1,6 +1,10 @@
 # Landfill
 A customizable command-line scaffolding tool to speed up development for node and npm.
 
+## WIP
+
+Currently everything here is a WIP from the code to the distinct lack of docs. Would not recommend bothering with this until the docs are complete. Its published to npm because a group of us are using it at work. This section will be removed when I think its sufficiently documented/tested.
+
 ## Installation
 
 Install globally for cli usage.
@@ -62,15 +66,28 @@ To use a template add the following to the package.json of the project you want 
 ```js
 // contents of package.json
 "landfill": {
-  "{{template-name}}": {
-    "src": "{{path/to/template/folder}}"
+  "templates": {
+    "{{template-name}}": {
+      "src": "{{path/to/template/folder}}"
+    }
   }
 }
 …
 // good practice to specify a Landfill version in dependencies
 // so it will definitely work for other dev
 "devDependencies": {
-	"landfill": "0.1.3"
+  "landfill": "0.1.3"
+}
+```
+
+##### Alternate Configuration
+A bit tidier, however won't work with roadmapped configuration settings.
+```js
+// contents of package.json
+"landfill-templates": {
+  "{{template-name}}": {
+    "src": "{{path/to/template/folder}}"
+  }
 }
 ```
 

@@ -16,13 +16,24 @@ let configFiles =
         return fs.readFile(filePath, 'utf8')
           .then(JSON.parse)
           .then(pkgJson => {
-            let config =
-              { templates: pkgJson.landfill.templates
-              , version:
-                  pkgJson.devDependencies.landfill ||
-                  pkgJson.dependencies.landfill ||
-                  false
-              }
+            let config
+            if (pkgJson.landfill.templates) {
+              config =
+                { templates: pkgJson.landfill.templates
+                , version:
+                    pkgJson.devDependencies.landfill ||
+                    pkgJson.dependencies.landfill ||
+                    false
+                }
+            } else if (pkgJson['landfill-templates']) {
+              config =
+                { templates: pkgJson['landfill-templates']
+                , version:
+                    pkgJson.devDependencies.landfill ||
+                    pkgJson.dependencies.landfill ||
+                    false
+                }
+            }
             return config
           })
       }
