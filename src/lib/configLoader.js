@@ -17,7 +17,7 @@ let configFiles =
           .then(JSON.parse)
           .then(pkgJson => {
             let config
-            if (pkgJson.landfill.templates) {
+            if (pkgJson.landfill) {
               config =
                 { templates: pkgJson.landfill.templates
                 , version:

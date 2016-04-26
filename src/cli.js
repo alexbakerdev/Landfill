@@ -106,7 +106,6 @@ function configLandfill (templateName) {
         , cwd: cwd
         }
 
-      console.log(landfillConfig)
       landfill(landfillConfig)
     }
   })
